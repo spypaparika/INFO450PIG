@@ -23,7 +23,7 @@ int translateToPigLatin(char userInput[50])
 		if (userInput[0] == '0' || userInput[0] == '1' || userInput[0] == '2' || userInput[0] == '3' || userInput[0] == '4' || userInput[0] == '5'
 			|| userInput[0] == '6' || userInput[0] == '7' || userInput[0] == '8' || userInput[0] == '9')
 		{
-			leave = -1;
+			leave = leave - 1;
 			cout << "error" << endl;
 		}
 		else if (stringLength <= 2 || !strcmp(userInput, "an") || !strcmp(userInput, "a") || !strcmp(userInput, "and") || !strcmp(userInput, "but")
@@ -31,7 +31,6 @@ int translateToPigLatin(char userInput[50])
 			|| !strcmp(userInput, "or"))
 		{
 			strcpy_s(pigLatinTranslate, userInput);
-			cout << "2" << endl;
 			cout << "Your text in pig latin is: " << pigLatinTranslate << endl;
 		}
 		//if letter starts with vowel
@@ -39,7 +38,6 @@ int translateToPigLatin(char userInput[50])
 		{
 			strcat_s(pigLatinTranslate, userInput);
 			strcat_s(pigLatinTranslate, ending);
-			cout << "1" << endl;
 			cout << "Your text in pig latin is: " << pigLatinTranslate << endl;
 		}
 		
@@ -67,7 +65,7 @@ int main()
 	//input string
 		cout << "Please enter text" << endl;
 		gets_s(newInput);
-		while (strcmp(newInput, "quit") && end > 0){
+		while (strcmp(newInput, "quit") || end <= 0){
 			end = translateToPigLatin(newInput);
 			cout << "Please enter text" << endl;
 			gets_s(newInput);
